@@ -1,0 +1,49 @@
+# Eclipse
+
+.project
+
+.classpath
+
+.settings/
+
+
+
+# IntelliJ
+
+*.iml
+
+*.ipr
+
+*.iws
+
+.idea
+
+.settings
+dependency-reduced-pom.xml
+
+
+
+# Maven
+
+target/
+
+
+
+#Gradle
+
+.gradle
+
+
+
+# TestNG
+
+test-output/
+logs/
+
+
+
+
+*.log
+
+#linux te files
+*~

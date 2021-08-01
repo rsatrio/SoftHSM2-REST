@@ -1,0 +1,60 @@
+server:
+  adminMinThreads: 1
+  adminMaxThreads: 64
+  adminContextPath: /
+  applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 9080
+   
+  adminConnectors:
+    - type: http
+      port: 9081
+  requestLog:
+    appenders:
+      - type: console
+      - type: file
+        currentLogFilename: logs/request.log
+        archivedLogFilenamePattern: logs/request-%d.log.gz
+        archivedFileCount: 30
+  
+  
+logging:
+  level: INFO
+  appenders:
+        - type: file
+          currentLogFilename: logs/softhsm-rest.log
+          archivedLogFilenamePattern: logs/softhsm-rest-%d.log.gz
+          archivedFileCount: 5
+        - type: console
+
+  loggers:
+    org.reflections: ERROR
+    
+
+    "auditTrail":
+      level: INFO
+      additive: false
+      appenders:
+        - type: file
+          currentLogFilename: logs/trail.log
+          archivedLogFilenamePattern: logs/trail-%d.log.gz
+          archivedFileCount: 5
+          logFormat: "%m%n"
+  
+  
+    
+# Swagger-specific options.
+swagger:
+
+  resourcePackage: com.rizky.softhsm.main.resources
+  title: SoftHSM REST API
+  schemes: [http,https]
+  version: 1.0
+  description: SoftHSM REST API
+  contact: Rizky
+  contactEmail: rizky@test.com
+  contactUrl: https://www.google.com
+  license: Apache 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0        
+    
