@@ -86,7 +86,12 @@ public class SoftHSMRestResource {
             sessP11=token.openSession(Token.SessionType.SERIAL_SESSION,
                     Token.SessionReadWriteBehavior.RO_SESSION, null, null);
 
-            sessP11.login(Session.UserType.USER, req.getHsm_pin().toCharArray()); 
+            try {
+                sessP11.login(Session.UserType.USER, req.getHsm_pin().toCharArray());
+            }
+            catch(Exception ex)    {
+                ex.printStackTrace();
+            }
             RSAPrivateKey rsaPrivateKeyTemplate = new RSAPrivateCustom(req.getKey_id());
 
             sessP11.findObjectsInit(rsaPrivateKeyTemplate);
